@@ -1,0 +1,10 @@
+# policy_map.yml (雛形)
+#
+# 政策カテゴリから担当部局/施策コード等へのマッピング例。
+# - category: 子育て支援
+#   departments: [子ども家庭部, 保育課]
+#   notes: 例) 保育所待機児童対策、学童クラブ拡充
+# - category: 高齢者福祉
+#   departments: [高齢福祉部]
+#   notes: 例) 介護予防、地域包括ケア
+
