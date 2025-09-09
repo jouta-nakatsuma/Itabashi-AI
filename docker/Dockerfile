@@ -12,9 +12,11 @@ RUN pip install --no-cache-dir "poetry==${POETRY_VERSION}"
 
 WORKDIR /app
 
-# 先に依存解決
-COPY pyproject.toml poetry.lock* ./
+# 先に依存解決（lock が無い/壊れていても生成できるように）
+COPY pyproject.toml ./
+COPY poetry.lock* ./
 RUN poetry config virtualenvs.create false \
+    && poetry lock --no-interaction --no-ansi \
     && poetry install --no-interaction --no-ansi --no-root
 
 # アプリ本体
@@ -24,4 +26,3 @@ EXPOSE 8000
 ENV PORT=8000
 
 CMD ["uvicorn", "mcp.server:app", "--host", "0.0.0.0", "--port", "8000"]
-
